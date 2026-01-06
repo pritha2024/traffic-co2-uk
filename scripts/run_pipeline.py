@@ -8,7 +8,7 @@ from src.traffic_co2.io import load_traffic_data, save_processed_data
 from src.traffic_co2.cleaning import clean_traffic_data
 from src.traffic_co2.features import engineer_features
 from src.traffic_co2.modeling import train_co2_model
-# Added all three visualization functions to the import list
+# Ensure all visualization functions are imported
 from src.traffic_co2.viz import save_emissions_plot, save_correlation_heatmap, save_traffic_distribution
 
 def main():
@@ -27,14 +27,13 @@ def main():
         save_traffic_distribution(df)
         
         # 4. Modeling
-        # Predicting link_length_km as a proxy for infrastructure capacity
         model = train_co2_model(df, target_col='link_length_km')
         
         # 5. Save Results
         save_processed_data(df, "Final_Research_Data.csv")
         
         print("\n🏆 FULL RESEARCH PIPELINE COMPLETE!")
-        print("Check 'reports/figures/' for your three new plots.")
+        print("Check 'reports/figures/' for your new plots.")
         
     except Exception as e:
         print(f"❌ Error during pipeline: {e}")
