@@ -41,3 +41,19 @@ if __name__ == "__main__":
 
 # ... after save_emissions_plot(df, ...) ...
 save_correlation_heatmap(df)
+
+
+
+
+# ... (existing imports at the top)
+from src.traffic_co2.viz import save_emissions_plot, save_correlation_heatmap, save_traffic_distribution
+
+def main():
+    # ... (loading and cleaning steps)
+    
+    # 3. Visualizations
+    save_emissions_plot(df, x_col='all_motor_vehicles', y_col='link_length_km')
+    save_correlation_heatmap(df)
+    save_traffic_distribution(df)
+    
+    # ... (modeling and saving steps)
