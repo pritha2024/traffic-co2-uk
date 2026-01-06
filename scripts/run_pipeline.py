@@ -8,7 +8,8 @@ from src.traffic_co2.io import load_traffic_data, save_processed_data
 from src.traffic_co2.cleaning import clean_traffic_data
 from src.traffic_co2.features import engineer_features
 from src.traffic_co2.modeling import train_co2_model
-from src.traffic_co2.viz import save_emissions_plot
+# Added all three visualization functions to the import list
+from src.traffic_co2.viz import save_emissions_plot, save_correlation_heatmap, save_traffic_distribution
 
 def main():
     try:
@@ -20,40 +21,23 @@ def main():
         df = engineer_features(df)
         
         # 3. Visualization
-        # Using 'all_motor_vehicles' and 'link_length_km' from your dataset
+        print("\n🎨 Generating Research Visualizations...")
         save_emissions_plot(df, x_col='all_motor_vehicles', y_col='link_length_km')
+        save_correlation_heatmap(df)
+        save_traffic_distribution(df)
         
         # 4. Modeling
-        # Predicting link_length_km as a proxy for now
+        # Predicting link_length_km as a proxy for infrastructure capacity
         model = train_co2_model(df, target_col='link_length_km')
         
         # 5. Save Results
         save_processed_data(df, "Final_Research_Data.csv")
         
         print("\n🏆 FULL RESEARCH PIPELINE COMPLETE!")
+        print("Check 'reports/figures/' for your three new plots.")
         
     except Exception as e:
-        print(f"❌ Error: {e}")
+        print(f"❌ Error during pipeline: {e}")
 
 if __name__ == "__main__":
     main()
-
-
-# ... after save_emissions_plot(df, ...) ...
-save_correlation_heatmap(df)
-
-
-
-
-# ... (existing imports at the top)
-from src.traffic_co2.viz import save_emissions_plot, save_correlation_heatmap, save_traffic_distribution
-
-def main():
-    # ... (loading and cleaning steps)
-    
-    # 3. Visualizations
-    save_emissions_plot(df, x_col='all_motor_vehicles', y_col='link_length_km')
-    save_correlation_heatmap(df)
-    save_traffic_distribution(df)
-    
-    # ... (modeling and saving steps)
