@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: "Bera"
+    given-names: "Pritha"
+title: "UK-Traffic-CO2-Analysis-Pipeline"
+version: 0.1.0
+date-released: 2026-01-05
+url: "https://github.com/your-username/traffic-co2-uk"
