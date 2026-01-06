@@ -57,4 +57,3 @@ The analysis identified a specific cluster of "High-Traffic, High-Emission" hots
 4.  Run all cells sequentially.
 
 ---
-*This project was submitted in partial fulfillment of the requirements for the MSc Data Science degree at the University of Birmingham.*
